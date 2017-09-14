@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="H, 11 szept. 2017 18:15:28 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Sorting-Insert</title>    
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+	<!--Prism 
+			  is a lightweight, extensible syntax highlighter for different programming languages
+	    	  http://prismjs.com/#features-full 
+	-->
+	<link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+	
+	<!-- MathJax 
+		 allows you to include mathematics in your web pages, either using 
+		 LaTeX, MathML, or AsciiMath notation, http://docs.mathjax.org/en/latest/start.html
+		 		When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+		 	  		 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+	-->
+	<script type="text/javascript" async
+  			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/x-mathjax-config">
+  			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	
+	<style>
+    hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 2px;
+    } 
+	</style>
+	
+  </head>
+  <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+  
+  <body>
+	<h2><font color="#006699">Description</font></h2>
+  	<p>Insertion sort works the way many people sort a hand of playing cards.<br>
+	We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and 
+	insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the 
+	cards already in the hand, from right to left.
+    </p>
+	<pre>
+        <b>Links:</b>
+    		<a href="http://www.geeksforgeeks.org/insertion-sort">Geeks for Geeks->Insertion-sort</a>
+    		<a href="https://en.wikipedia.org/wiki/Insertion_sort">Wiki -> Insertion-sort</a>
+    </pre>
+	
+	<hr>
+	<h3><font color="#006699">InsertionSort(<i>arr</i>)-Pseudo Code</font></h3>
+	<hr>
+	<pre style="background-color:#E6E6E6;color:black;padding:20px;">
+      1. <b>for</b> j=2 <b>to</b> <i>arr</i>:length
+      2.    key = arr[<i>j</i>]
+      3.    <b><font color="#04B404">// Insert  <i>arr</i>[<i>j</i>] into the sorted sequence arr[<i>1..j-1<i>]</font></b>
+      4.    i = j-1
+      5.    <b>while</b> i > 0 <b>and</b> arr[i] > key
+      6.        arr[<i>i+1</i>] = arr[<i>i</i>]
+      7.        i = i-1
+      8.    arr[<i>i+1</i>] = key
+	</pre>
+	
+	<hr>
+	<h3><font color="#006699">InsertionSort(<i>arr</i>) in Python</font></h3>
+	<hr>
+	<pre><code class="language-python">
+	# Python program for implementation of Insertion Sort
+        def insertionSort(arr):
+        '''
+          Function to do insertion sort
+          Param: arr -> Array or List
+        '''
+        # Function to do insertion sort
+        # Traverse through 1 to len(arr)
+          for j in range(1, len(arr)):
+              key = arr[j]
+              # Move elements of arr[0..i-1], that are greater than key, 
+              #to one position ahead of their current position
+              i = j-1
+              while i >=0 and key < arr[i] :
+                      arr[i+1] = arr[i]
+                      i -= 1
+              arr[i+1] = key
+       
+      # Driver code to test above
+      arr = [12, 11, 13, 5, 6]
+      insertionSort(arr)
+      print ("Sorted array is:")
+      for i in range(len(arr)):
+          print ("%d" %arr[i])
+ 
+      # This code is contributed by Mohit Kumra
+	</code></pre>
+	
+	<hr>
+	<h3><font color="#006699">InsertionSort(<i>arr</i>) in Java</font></h3>
+	<hr>
+	<pre><code class="language-java">
+// Java program for implementation of Insertion Sort
+class InsertionSort
+{
+    /*Function to sort array using insertion sort*/
+    void sort(int arr[])
+    {
+        int n = arr.length;
+        for (int i=1; i<n; ++i)
+        {
+            int key = arr[i];
+            int j = i-1;
+ 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j>=0 && arr[j] > key)
+            {
+                arr[j+1] = arr[j];
+                j = j-1;
+            }
+            arr[j+1] = key;
+        }
+    }
+ 
+    /* A utility function to print array of size n*/
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i < n; ++i)
+		System.out.print(arr[i] + " ");
+ 
+        System.out.println();
+    }
+ 
+    // Driver method
+    public static void main(String args[])
+    {        
+        int arr[] = {12, 11, 13, 5, 6};
+ 
+        InsertionSort ob = new InsertionSort();        
+        ob.sort(arr);
+         
+        printArray(arr);
+    }
+} /* This code is contributed by Rajat Mishra. */
+</code></pre>
+
+<hr>
+	<h3><font color="#006699">InsertionSort(<i>arr</i>) in C#/C++</font></h3>
+	<hr>
+	<pre><code class="language-c">
+// C program for insertion sort
+#include <stdio.h>
+#include <math.h>
+ 
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n)
+{
+   int i, key, j;
+   for (i = 1; i < n; i++)
+   {
+       key = arr[i];
+       j = i-1;
+ 
+       /* Move elements of arr[0..i-1], that are
+          greater than key, to one position ahead
+          of their current position */
+       while (j >= 0 && arr[j] > key)
+       {
+           arr[j+1] = arr[j];
+           j = j-1;
+       }
+       arr[j+1] = key;
+   }
+}
+ 
+// A utility function ot print an array of size n
+void printArray(int arr[], int n)
+{
+   int i;
+   for (i=0; i < n; i++)
+       printf("%d ", arr[i]);
+   printf("\n");
+} 
+ 
+/* Driver program to test insertion sort */
+int main()
+{
+    int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    insertionSort(arr, n);
+    printArray(arr, n);
+ 
+    return 0;
+}
+</code></pre>
+  </body>
+</html>

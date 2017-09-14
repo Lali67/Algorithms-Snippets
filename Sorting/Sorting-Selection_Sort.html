@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="H, 13 szept. 2017">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Sorting-Selection</title>    
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+	<!--Prism 
+			  is a lightweight, extensible syntax highlighter for different programming languages
+	    	  http://prismjs.com/#features-full 
+	-->
+	<link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+	
+	<!-- MathJax 
+		 allows you to include mathematics in your web pages, either using 
+		 LaTeX, MathML, or AsciiMath notation, http://docs.mathjax.org/en/latest/start.html
+		 		When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+		 	  		 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+	-->
+	<script type="text/javascript" async
+  			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/x-mathjax-config">
+  			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	
+	<style>
+    hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 2px;
+    } 
+	</style>
+	
+  </head>
+  <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+  
+  <body>
+	<h2><font color="#006699">Description</font></h2>
+	<p>
+	The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
+	</p>
+	<pre>
+      <i>1. The subarray which is already sorted.</i>
+      <i>2. Remaining subarray which is unsorted.</i>
+	</pre><p>
+	In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
+	</p>	
+	<pre>
+        <b>Links:</b>
+    		<a href="http://www.geeksforgeeks.org/selection-sort">Geeks for Geeks -> Selectionn-sort</a>
+    		<a href="https://en.wikipedia.org/wiki/Selection_sort">Wiki-> Selection-sort</a>
+    </pre>
+	
+	<hr>
+	<h3><font color="#006699">SelectionSort(<i>arr</i>)-Pseudo Code</font></h3>
+	<hr>
+	<pre style="background-color:#E6E6E6;color:black;padding:20px;">
+            <b><font color="#04B404">// GOAL: place the elements of A in ascending order </font></b>
+            1.  n := length[<i>A</i>]
+            2.  <b>for</b> i := 1 <b>to</b> n
+            3.  <b><font color="#04B404">// Find the minimum element in unsorted array</font></b>
+            4.      smallestAt := i
+            5.      <b>for</b> j := (i+1) <b>to</b> n
+            6.          <b>if</b> ( A[<i>j</i>] < A[<i>smallestAt</i>] )
+            7.              smallestAt := j
+            8.      <b>end-for</b>
+            9.      <b><font color="#04B404">// GOAL: place the correct number in A[i]</font></b>
+            10.     swap <i>A</i>[<i>i</i>] with <i>A</i>[<i>j</i>] 
+            11.     <b><font color="#04B404">// L.I. A[1..i] the i smallest numbers sorted </font></b>
+            12. <b>end-for</b>
+	</pre>
+	
+	<hr>
+	<h3><font color="#006699">SelectionSort(<i>arr</i>) in Python</font></h3>
+	<hr>
+	<pre><code class="language-python">
+     # Python program for implementation of Selection Sort
+     import sys
+     A = [64, 25, 12, 22, 11]
+         
+     # Traverse through all array elements
+     for i in range(len(A)):   
+     	 # Find the minimum element in remaining unsorted array
+         min_idx = i
+         for j in range(i+1, len(A)):
+              if A[min_idx] > A[j]:
+                    min_idx = j                        
+         # Swap the found minimum element with the first element        
+         A[i], A[min_idx] = A[min_idx], A[i]
+ 
+ 	# Driver code to test above
+	print ("Sorted array")
+	for i in range(len(A)):
+             print("%d" %A[i]), 
+	</code></pre>
+	
+	<hr>
+	<h3><font color="#006699">SelectionSort(<i>arr</i>) in Java</font></h3>
+	<hr>
+	<pre><code class="language-java">
+	// Java program for implementation of Selection Sort
+  	class SelectionSort
+  	{
+       void sort(int arr[])
+        {
+          int n = arr.length;
+          // One by one move boundary of unsorted subarray
+          for (int i = 0; i < n-1; i++)
+          {
+              // Find the minimum element in unsorted array
+              int min_idx = i;
+              for (int j = i+1; j < n; j++)
+                  if (arr[j] < arr[min_idx])
+                      min_idx = j;
+   
+              // Swap the found minimum element with the first element
+              int temp = arr[min_idx];
+              arr[min_idx] = arr[i];
+              arr[i] = temp;
+          }
+      }
+   
+      // Prints the array
+      void printArray(int arr[])
+      {
+          int n = arr.length;
+          for (int i=0; i < n; ++i)
+              System.out.print(arr[i]+" ");
+          System.out.println();
+      }
+   
+      // Driver code to test above
+      public static void main(String args[])
+      {
+          SelectionSort ob = new SelectionSort();
+          int arr[] = {64,25,12,22,11};
+          ob.sort(arr);
+          System.out.println("Sorted array");
+          ob.printArray(arr);
+      }
+  }
+  /* This code is contributed by Rajat Mishra*/
+	</code></pre>
+
+<hr>
+	<h3><font color="#006699">SelectionSort(<i>arr</i>) in C#/C++</font></h3>
+	<hr>
+	<pre><code class="language-c">
+	// C program for implementation of selection sort
+	#include <stdio.h>
+ 
+    void swap(int *xp, int *yp)
+    {
+        int temp = *xp;
+        *xp = *yp;
+        *yp = temp;
+    }
+ 
+    void selectionSort(int arr[], int n)
+    {
+        int i, j, min_idx;
+     
+        // One by one move boundary of unsorted subarray
+        for (i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            min_idx = i;
+            for (j = i+1; j < n; j++)
+              if (arr[j] < arr[min_idx])
+                min_idx = j;
+     
+            // Swap the found minimum element with the first element
+            swap(&arr[min_idx], &arr[i]);
+        }
+    }
+ 
+    /* Function to print an array */
+    void printArray(int arr[], int size)
+    {
+        int i;
+        for (i=0; i < size; i++)
+            printf("%d ", arr[i]);
+        printf("\n");
+    }
+ 
+    // Driver program to test above functions
+    int main()
+    {
+        int arr[] = {64, 25, 12, 22, 11};
+        int n = sizeof(arr)/sizeof(arr[0]);
+        selectionSort(arr, n);
+        printf("Sorted array: \n");
+        printArray(arr, n);
+        return 0;
+    }
+	</code></pre>
+  </body>
+</html>
