@@ -18,6 +18,8 @@ where,
 <li>Required Knowledge:     Sum of two numbers</li>
 </ul>
 
+## C++ code
+
 ```c++
 #include <cmath>
 #include <cstdio>
