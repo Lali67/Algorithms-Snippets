@@ -40,10 +40,52 @@ int main() {
   sum = solveMeFirst(num1,num2);
   cout<<sum;
   // 1. Wait for a key press...
-	 //cout << << endl << endl << "Press ENTER to continue....." << endl << endl;
-	 //cin.ignore(1);
-	 //cin.ignore(1);
+  //cout << << endl << endl << "Press ENTER to continue....." << endl << endl;
+  //cin.ignore(1);
+  //cin.ignore(1);
   
   return 0;
+}
+```
+
+## Python code
+
+```python
+def solveMeFirst(a,b):
+   # Hint: Type return a+b below
+    return a+b
+  
+
+num1 = int(input())
+num2 = int(input())
+res = solveMeFirst(num1,num2)
+print(res)
+```
+
+## Java code
+
+```java
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+
+    static int solveMeFirst(int a, int b) {
+      	// Hint: Type return a+b; below 
+        return a+b;
+   }
+
+ public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int a,b,sum;
+        a = in.nextInt();
+        b = in.nextInt();
+        sum = solveMeFirst(a, b);
+        System.out.println(sum);
+   }
 }
 ```
