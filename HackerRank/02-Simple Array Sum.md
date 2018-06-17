@@ -3,8 +3,8 @@
 # Problem
 Given an array of integers, find the sum of its elements.<br>
 <b>Input Format</b><br>
-The first line contains an integer, , denoting the size of the array.<br>
-The second line contains space-separated integers representing the array's elements.<br>
+The first line contains an integer,<b>n</b>, denoting the size of the array.<br>
+The second line <b>n</b> contains space-separated integers representing the array's elements.<br>
 <b>Output Format:</b><br>
 Print the sum of the array's elements as a single integer.<br>
 <b>Sample Input:</b><br>
